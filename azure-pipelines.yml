@@ -15,6 +15,16 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise (86c8508a-7f23-425b-bd16-4df7395fda93)'
+    appType: 'webApp'
+    appName: 'getmyage'
+    deployToSlotOrASE: true
+    resourceGroupName: 'getmyage'
+    slotName: 'development'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
